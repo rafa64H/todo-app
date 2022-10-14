@@ -7,20 +7,20 @@
     --Chec-Background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
     /*Light theme colors*/
-    --Very-Light-Gray: hsl(0, 0%, 98%);
-    --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
-    --Light-Grayish-Blue: hsl(233, 11%, 84%);
-    --Dark-Grayish-Blue: hsl(236, 9%, 61%);
-    --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+    --light-Very-Light-Gray: hsl(0, 0%, 98%);
+    --light-Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+    --light-Light-Grayish-Blue: hsl(233, 11%, 84%);
+    --light-Dark-Grayish-Blue: hsl(236, 9%, 61%);
+    --light-Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
 
     /*Dark theme colors*/
-    --Very-Dark-Blue: hsl(235, 21%, 11%);
-    --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
-    --Ligh-Grayish-Blue: hsl(234, 39%, 85%);
-    --Ligh-Grayish-Blue-hover: hsl(236, 33%, 92%);
-    --Dark-Grayish-Blue: hsl(234, 11%, 52%);
-    --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
-    --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
+    --dark-Very-Dark-Blue: hsl(235, 21%, 11%);
+    --dark-Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+    --dark-Ligh-Grayish-Blue: hsl(234, 39%, 85%);
+    --dark-Ligh-Grayish-Blue-hover: hsl(236, 33%, 92%);
+    --dark-Dark-Grayish-Blue: hsl(234, 11%, 52%);
+    --dark-Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+    --dark-Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
 
 }
 
@@ -43,3 +43,79 @@ a{
 }
 
 /*General styles--*/
+
+/*--Header*/
+header{
+    background-image: url('../images/bg-mobile-light.jpg');
+    padding: 2em 1em;
+}
+
+
+.logo-themebtn-container{
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0 auto;
+    width: 90%;
+}
+
+.header__title{
+    color: white;
+    font-family: sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.4ch;
+
+    user-select: none;
+}
+
+
+/*Header--*/
+
+
+/*List and list items*/
+.list-input{
+    display: flex;
+    align-items: center;
+
+    margin: 0 auto;
+    margin-top: 2em;
+    background-color: white;
+
+    border-radius: 5px;
+}
+
+.circle-shape{
+    display: inline-block;
+
+    margin-left: 1em;
+    border: var(--light-Light-Grayish-Blue) 1px solid;
+    padding: 0.6rem;
+
+    border-radius: 50%;
+}
+
+.list-input__tag{
+    display: inline-block;
+
+    border: none;
+    width: 100%;
+    padding: 1rem 0 1rem 1rem;
+
+    color: var(--light-Very-Dark-Grayish-Blue);
+
+    border-radius: 5px;
+}
+.list-input__tag:focus{
+    outline: none;
+}
+.list-input__tag::placeholder{
+    color: var(--light-Dark-Grayish-Blue);
+}
+  .list-input__tag::-ms-input-placeholder { /* Microsoft Edge */
+    color: var(--light-Dark-Grayish-Blue);
+}
+
+.list-container{
+
+}
+/*List and list items--*/
