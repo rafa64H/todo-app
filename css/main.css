@@ -29,12 +29,14 @@
     margin: 0;
     max-width: auto;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 button{
     background: none;
     border: none;
     cursor: pointer;
+    font-size: 1rem;
 }
 
 a{
@@ -67,8 +69,6 @@ header{
 
     user-select: none;
 }
-
-
 /*Header--*/
 
 
@@ -116,6 +116,39 @@ header{
 }
 
 .list-container{
+    width: 90%;
+    margin: 0 auto;
 
+    border-radius: 15px;
+    box-shadow: 0rem 0rem 1rem  rgba(0, 0, 0, 0.45);
+}
+
+.list-item{
+    display: flex;
+    align-items: center;
+    
+    border-bottom: 1px solid var(--light-Light-Grayish-Blue);
+    padding: 1em 1.5em;
+}
+.circle-shape--li{
+    background: var(--Chec-Background);
+    border: none;
+    margin-right: 1em;
+    padding: 0.3em 0.5em;
+}
+.list-item__remove-btn-tag{
+    margin-left: auto;
+}
+
+.list-container-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1em 0.5em;
+}
+
+.bottom-filters--1{
+    display: none;
 }
 /*List and list items--*/
