@@ -32,6 +32,10 @@
     font-family: sans-serif;
 }
 
+body{
+    background-color: var(--light-Very-Light-Gray);
+}
+
 button{
     background: none;
     border: none;
@@ -120,7 +124,7 @@ header{
     margin: 0 auto;
 
     border-radius: 15px;
-    box-shadow: 0rem 0rem 1rem  rgba(0, 0, 0, 0.45);
+    box-shadow: 0rem 0.2rem 1rem  rgba(0, 0, 0, 0.4);
 }
 
 .list-item{
@@ -148,7 +152,36 @@ header{
     padding: 1em 0.5em;
 }
 
+
+.bottom-filters{
+    display: flex;
+    justify-content: center;
+
+    background-color: white;
+    width: 90%;
+    margin: 1em auto;
+    padding: 1em;
+
+    border-radius: 0.5rem;
+    box-shadow: 0rem 0.2rem 1rem  rgba(0, 0, 0, 0.1);
+}
+
 .bottom-filters--1{
     display: none;
 }
+
+.filter-btns{
+    margin: 0 1em;
+}
 /*List and list items--*/
+
+/*--End-paragraph and footer*/
+
+.end-paragraph{
+    text-align: center;
+}
+
+footer{
+    background: var(--Chec-Background);
+    margin-top: 2em;
+}
