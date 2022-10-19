@@ -52,8 +52,11 @@ a{
 
 /*--Header*/
 header{
-    background-image: url('../images/bg-mobile-light.jpg');
-    padding: 2em 1em;
+    background-image: url('../images/bg-desktop-light.jpg');
+    padding: 3em 1em;
+
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -62,7 +65,7 @@ header{
     justify-content: space-between;
 
     margin: 0 auto;
-    width: 90%;
+    width: min(60rem, 90%);
 }
 
 .header__title{
@@ -84,6 +87,7 @@ header{
     margin: 0 auto;
     margin-top: 2em;
     background-color: white;
+    width: min(60rem, 90%);
 
     border-radius: 5px;
 }
@@ -120,8 +124,14 @@ header{
 }
 
 .list-container{
-    width: 90%;
+    position: static;
+    z-index: 3;
+
+    background-color: white;
+    width: min(60rem, 85%);
     margin: 0 auto;
+    
+    transform: translateY(-2em);
 
     border-radius: 15px;
     box-shadow: 0rem 0.2rem 1rem  rgba(0, 0, 0, 0.4);
@@ -156,22 +166,25 @@ header{
 .bottom-filters{
     display: flex;
     justify-content: center;
-
-    background-color: white;
-    width: 90%;
-    margin: 1em auto;
-    padding: 1em;
-
-    border-radius: 0.5rem;
-    box-shadow: 0rem 0.2rem 1rem  rgba(0, 0, 0, 0.1);
+    align-items: center;
 }
 
 .bottom-filters--1{
     display: none;
 }
 
+.bottom-filters--2{
+    background-color: white;
+    width: min(60rem, 85%);
+    margin: -1em auto 1em auto;
+    padding: 1em;
+
+    border-radius: 0.5rem;
+    box-shadow: 0rem 0.2rem 1rem  rgba(0, 0, 0, 0.1);
+}
+
 .filter-btns{
-    margin: 0 1em;
+    margin: 0 0.5em;
 }
 /*List and list items--*/
 
@@ -184,4 +197,36 @@ header{
 footer{
     background: var(--Chec-Background);
     margin-top: 2em;
+
+    text-align: center;
+}
+/*End-paragraph and footer--*/
+
+
+/*--Media query desktop*/
+
+@media screen and (min-width: 50em){
+    header{
+        padding: 4em 1em 6em 1em;
+    }
+
+    .list-container{
+        transform: translateY(-5em);
+    }
+
+    .bottom-filters--1{
+        display: block;
+    }
+
+    .filter-btns{
+        margin: 0 0.5em;
+    }
+
+    .bottom-filters--2{
+        display: none;
+    }
+
+    .end-paragraph{
+        margin-top: -2em;
+    }
 }
