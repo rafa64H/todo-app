@@ -24,7 +24,7 @@
 
 }
 
-*{
+*, *::before, *::after{
     padding: 0;
     margin: 0;
     max-width: auto;
@@ -33,6 +33,10 @@
 }
 
 body{
+    display: flex;
+    flex-direction: column; 
+
+    min-height: 100vh;
     background-color: var(--light-Very-Light-Gray);
 }
 
@@ -124,7 +128,7 @@ header{
 }
 
 .list-container{
-    position: static;
+    position: relative;
     z-index: 3;
 
     background-color: white;
@@ -154,6 +158,10 @@ header{
     margin-left: auto;
 }
 
+.list-item__text{
+    width: 80%;
+}
+
 .list-container-bottom{
     display: flex;
     align-items: center;
@@ -176,7 +184,7 @@ header{
 .bottom-filters--2{
     background-color: white;
     width: min(60rem, 85%);
-    margin: -1em auto 1em auto;
+    margin: 1em auto 1em auto;
     padding: 1em;
 
     border-radius: 0.5rem;
@@ -185,18 +193,24 @@ header{
 
 .filter-btns{
     margin: 0 0.5em;
+
+
 }
 /*List and list items--*/
 
 /*--End-paragraph and footer*/
 
 .end-paragraph{
+    margin-top: auto;
+    margin-bottom: 1em;
+
     text-align: center;
 }
 
 footer{
     background: var(--Chec-Background);
-    margin-top: 2em;
+    padding: 1em;
+    margin-top: auto;
 
     text-align: center;
 }
@@ -227,6 +241,7 @@ footer{
     }
 
     .end-paragraph{
-        margin-top: -2em;
     }
 }
+/*Media query desktop--*/
+
