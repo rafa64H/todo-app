@@ -148,12 +148,12 @@ header{
     border-bottom: 1px solid var(--light-Light-Grayish-Blue);
     padding: 1em 1.5em;
 }
+
 .circle-shape--li{
-    background: var(--Chec-Background);
-    border: none;
     margin-right: 1em;
-    padding: 0.3em 0.5em;
+    padding: 0.1em 0.3em;
 }
+
 .list-item__remove-btn-tag{
     margin-left: auto;
 }
@@ -193,8 +193,6 @@ header{
 
 .filter-btns{
     margin: 0 0.5em;
-
-
 }
 /*List and list items--*/
 
@@ -244,4 +242,3 @@ footer{
     }
 }
 /*Media query desktop--*/
-
