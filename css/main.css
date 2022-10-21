@@ -266,6 +266,10 @@ footer{
         transform: translateY(-5em);
     }
 
+    .list-item__remove-btn-tag{
+        opacity: 0;
+    }
+
     .bottom-filters--1{
         display: block;
     }
@@ -282,3 +286,28 @@ footer{
     }
 }
 /*Media query desktop--*/
+
+[data-btn-hovering]{
+    border: 1px solid var(--Bright-Blue);
+}
+
+[data-remove-hovering]{
+    opacity: 1;
+}
+
+[data-btn-completed]{
+    background: var(--Chec-Background);
+    border: none;
+}
+
+[data-text-completed]{
+    text-decoration: line-through;
+    color: var(--light-Dark-Grayish-Blue);
+}
+
+[data-filter-active]{
+    color: var(--Bright-Blue);
+}
+[data-filter-active]:hover{
+    color: var(--Bright-Blue);
+}

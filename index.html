@@ -69,15 +69,15 @@
 
       </li>
 
-      <li class="list-item">
+      <li class="list-item" data-completed>
 
-        <button class="list-item__check circle-shape circle-shape--li">
+        <button class="list-item__check circle-shape circle-shape--li" data-btn-completed data-btn-hovering>
           <img src="images/icon-check.svg" class="list-item__check-img" alt="Check completed task">
         </button>
 
-        <p class="list-item__text">Dog</p>
+        <p class="list-item__text" data-text-completed data-text-hovering>Dog</p>
 
-        <button class="list-item__remove-btn-tag"><img src="images/icon-cross.svg" alt="" class="list-item__remove-img"></button>
+        <button class="list-item__remove-btn-tag" data-remove-hovering><img src="images/icon-cross.svg" alt="" class="list-item__remove-img"></button>
 
       </li>
 
@@ -88,7 +88,7 @@
 
       <!--<filters on desktop>-->
       <div class="bottom-filters bottom-filters--1">
-        <button class="filter-btns">All</button>
+        <button class="filter-btns" data-filter-active>All</button>
         <button class="filter-btns">Active</button>
         <button class="filter-btns" >Completed</button>
       </div>
@@ -102,7 +102,7 @@
 
   <!--<filters on mobile>-->
   <div class="bottom-filters bottom-filters--2">
-    <button class="filter-btns">All</button>
+    <button class="filter-btns" data-filter-active>All</button>
     <button class="filter-btns">Active</button>
     <button class="filter-btns">Completed</button>
   </div>
