@@ -87,6 +87,7 @@ header{
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
+
 }
 /*Header--*/
 
@@ -170,6 +171,13 @@ header{
 
 .list-item__text{
     width: 80%;
+}
+
+.list-item__text--empty{
+    width: 100%;
+
+    color: var(--light-Dark-Grayish-Blue);
+    text-align: center;
 }
 
 .list-container-bottom{
@@ -356,10 +364,6 @@ footer{
     border-bottom: 1px solid var(--dark-Very-Dark-Grayish-Blue);
 }
 
-[data-bottom-filters-2-dark-theme]{
-    background-color: var(--dark-Very-Dark-Grayish-Blue2);
-}
-
 [data-list-item-text-dark-theme]{
     color: var(--dark-Ligh-Grayish-Blue);
 }
@@ -378,6 +382,10 @@ footer{
 }
 [data-clear-completed-dark-theme]:hover{
     color: var(--dark-Ligh-Grayish-Blue-hover);
+}
+
+[data-bottom-filters-two-dark-theme]{
+    background-color: var(--dark-Very-Dark-Grayish-Blue2);
 }
 
 [data-filter-btns-dark-theme]{

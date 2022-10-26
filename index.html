@@ -5,23 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="css/main.css">
+
+  <script type="module" src="js/main.js" defer></script>
+  <script type="module" src="js/class.js" defer></script>
+  <script type="module" src="js/dark-theme.js" defer></script>
   
   <title>Frontend Mentor | Todo app</title>
 </head>
-<body data-body-dark-theme>
+<body data-verify-theme="light">
   <!--Header and the text input-->
-  <header data-header-dark-theme>
+  <header>
 
     <div class="logo-themebtn-container"> 
 
       <h1 class="header__title">TODO</h1>
-      <button alt="Change dark-light theme" class="change-theme-btn" data-change-theme-btn-dark-theme></button>
+      <button alt="Change dark-light theme" class="change-theme-btn"></button>
 
     </div>
     
-    <div class="list-input" data-list-input-dark-theme>
-      <span class="circle-shape circle-shape--input" data-circle-shape-dark-theme></span>
-      <input type="text" class="list-input__tag" placeholder="Create new todo.." data-list-input-tag-dark-theme>
+    <div class="list-input">
+      <span class="circle-shape circle-shape--input"></span>
+      <input type="text" class="list-input__tag" placeholder="Create new todo..">
     </div>
     
   </header>
@@ -29,66 +33,39 @@
 
   
   <!--List and items list-->
-  <section class="list-container" data-list-container-dark-theme>
+  <section class="list-container">
     <ul class="todo-list">
+      <!--
+      <li class="list-item" data-list-item>
 
-      <li class="list-item" data-list-item-dark-theme>
-
-        <button class="list-item__check circle-shape circle-shape--li" data-circle-shape-dark-theme>
+        <button class="list-item__check circle-shape circle-shape--li" data-circle-shape>
         </button>
 
-        <p class="list-item__text" data-list-item-text-dark-theme>Learn Web development</p>
+        <p class="list-item__text" data-list-item-text>Learn Web development</p>
 
         <button class="list-item__remove-btn-tag"><img src="images/icon-cross.svg" alt="" class="list-item__remove-img"></button>
 
       </li>
+      -->
+      <li class="list-item">
 
-      <li class="list-item" data-list-item-dark-theme>
-
-        <button class="list-item__check circle-shape circle-shape--li" data-circle-shape-dark-theme>
-        </button>
-
-        <p class="list-item__text" data-list-item-text-dark-theme>Learn Web development</p>
-
-        <button class="list-item__remove-btn-tag"><img src="images/icon-cross.svg" alt="" class="list-item__remove-img"></button>
-
-      </li>
-
-      <li class="list-item" data-list-item-dark-theme>
-
-        <button class="list-item__check circle-shape circle-shape--li" data-circle-shape-dark-theme>
-        </button>
-
-        <p class="list-item__text" data-list-item-text-dark-theme>Learn Web development fas fdsadfsfads fdsafds asfd asf d</p>
-
-        <button class="list-item__remove-btn-tag"><img src="images/icon-cross.svg" alt="" class="list-item__remove-img"></button>
-
-      </li>
-
-      <li class="list-item" data-completed data-list-item-dark-theme>
-
-        <button class="list-item__check circle-shape circle-shape--li" data-btn-completed data-btn-hovering data-circle-shape-dark-theme>
-        </button>
-
-        <p class="list-item__text" data-text-completed-dark-theme data-text-hovering>Dog</p>
-
-        <button class="list-item__remove-btn-tag" data-remove-hovering><img src="images/icon-cross.svg" alt="" class="list-item__remove-img"></button>
+        <p class="list-item__text list-item__text--empty">There is no items</p>
 
       </li>
 
     </ul>
 
     <section class="list-container-bottom">
-      <p class="list-bottom-li-left" data-list-bottom-items-left-dark-theme>1 Items left</p>
+      <p class="list-bottom-li-left">1 Items left</p>
 
       <!--<filters on desktop>-->
       <div class="bottom-filters bottom-filters--1">
-        <button class="filter-btns" data-filter-btns-dark-theme data-filter-active>All</button>
-        <button class="filter-btns" data-filter-btns-dark-theme>Active</button>
-        <button class="filter-btns" data-filter-btns-dark-theme>Completed</button>
+        <button class="filter-btns">All</button>
+        <button class="filter-btns">Active</button>
+        <button class="filter-btns">Completed</button>
       </div>
 
-      <button class="clear-completed" data-clear-completed-dark-theme>Clear Completed</button>
+      <button class="clear-completed">Clear Completed</button>
     </section>
 
   </section>
@@ -96,23 +73,23 @@
 
 
   <!--<filters on mobile>-->
-  <div class="bottom-filters bottom-filters--2" data-bottom-filters-2-dark-theme>
-    <button class="filter-btns" data-filter-active>All</button>
+  <div class="bottom-filters bottom-filters--2">
+    <button class="filter-btns">All</button>
     <button class="filter-btns">Active</button>
     <button class="filter-btns">Completed</button>
   </div>
 
  
-  <p class="end-paragraph" data-end-paragraph-dark-theme>Drag and drop to reorder list</p>
+  <p class="end-paragraph">Drag and drop to reorder list</p>
 
 
   <!--Footer and links-->
-  <footer data-footer-dark-theme>
-    <p class="footer__p" data-footer-paragraph-dark-theme>
+  <footer>
+    <p class="footer__p">
     
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" class="footer__link" target="_blank" 
-      data-footer-link-dark-theme>Frontend Mentor</a>. Coded by <a href="https://github.com/rafa64H" class="footer__link" target="_blank" 
-      data-footer-link-dark-theme>Rafael Pacheco</a>.
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" class="footer__link" target="_blank" >
+        Frontend Mentor</a>. Coded by <a href="https://github.com/rafa64H" class="footer__link" target="_blank" >
+        Rafael Pacheco</a>.
     
     </p>
   </footer>
