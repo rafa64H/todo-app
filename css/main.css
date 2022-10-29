@@ -165,7 +165,12 @@ header{
     padding: 0.65rem;
 }
 
-.list-item__remove-btn-tag{
+.list-item__remove-btn{
+    background-image: url(../images/icon-cross.svg);
+    background-repeat: no-repeat;
+
+    padding: 0.55rem;
+
     margin-left: auto;
 }
 
@@ -282,8 +287,8 @@ footer{
         transform: translateY(-5em);
     }
 
-    .list-item__remove-btn-tag{
-        opacity: 0;
+    .list-item__remove-btn{
+        
     }
 
     .bottom-filters--1{

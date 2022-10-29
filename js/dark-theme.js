@@ -1,4 +1,6 @@
-export {changeTheme}
+export {changeTheme, verifyTheme}
+
+import { toDoListItemsMaker } from "./main.js"
 
 const body = document.querySelector('body')
 
@@ -47,20 +49,10 @@ function changeTheme(changeThemeButton){
         delete header.dataset.headerDarkTheme 
         delete listInputDiv.dataset.listInputDarkTheme 
         delete listInputTag.dataset.listInputTagDarkTheme 
+
+        delete listContainer.dataset.listContainerDarkTheme
         
-        circleShapes.forEach(circleShape => {
-            delete circleShape.dataset.circleShapeDarkTheme 
-        });
-
-        delete listContainer.dataset.listContainerDarkTheme 
-
-        listItems.forEach( listItem => {
-            delete listItem.dataset.listItemDarkTheme 
-        })
-
-        listItemsText.forEach( listItemText => {
-            delete listItemText.dataset.listItemTextDarkTheme 
-        })
+        toDoListItemsMaker.setLightTheme()
 
         delete listBottomLiLeft.dataset.listBottomItemsLeftDarkTheme 
 
@@ -91,19 +83,9 @@ function changeTheme(changeThemeButton){
         listInputDiv.dataset.listInputDarkTheme = true
         listInputTag.dataset.listInputTagDarkTheme = true
         
-        circleShapes.forEach(circleShape => {
-            circleShape.dataset.circleShapeDarkTheme = true
-        });
-
         listContainer.dataset.listContainerDarkTheme = true
 
-        listItems.forEach( listItem => {
-            listItem.dataset.listItemDarkTheme = true
-        })
-
-        listItemsText.forEach( listItemText => {
-            listItemText.dataset.listItemTextDarkTheme = true
-        })
+        toDoListItemsMaker.setDarkTheme()
 
         listBottomLiLeft.dataset.listBottomItemsLeftDarkTheme = true
 
