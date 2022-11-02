@@ -120,6 +120,11 @@ class ListItemsMaker {
         this._listItemsText.forEach(listItemText => {
             listItemText.dataset.listItemTextDarkTheme = true
         });
+
+        this._listItemsTextCompleted.forEach(listItemText => {
+            delete listItemText.dataset.textCompleted
+            listItemText.dataset.textCompletedDarkTheme = true
+        });
     }
 
     setLightTheme(){
@@ -137,10 +142,52 @@ class ListItemsMaker {
         this._listItemsText.forEach(listItemText => {
             delete listItemText.dataset.listItemTextDarkTheme
         });
+
+        this._listItemsTextCompleted.forEach(listItemText => {
+            delete listItemText.dataset.textCompletedDarkTheme
+            listItemText.dataset.textCompleted = true
+        });
+        
     }
 
     checkListItem(listItem, checkButton, listItemText,removeButton){
+        this._listItemsCompleted.push(listItem)
+        this._checkButtonsCompleted.push(checkButton)
+        this._listItemsTextCompleted.push(listItemText)
+        this._removeButtonsCompleted.push(removeButton)
 
+        this._listItemsActive.shift(listItem)
+        this._checkButtonsActive.shift(checkButton)
+        this._listItemsTextActive.shift(listItemText)
+        this._removeButtonsActive.shift(removeButton)
+
+        if(verifyTheme=== 'dark'){
+            checkButton.dataset.btnCompleted = true
+            listItemText.dataset.textCompletedDarkTheme = true
+        }else{
+            checkButton.dataset.btnCompleted = true
+            listItemText.dataset.textCompleted = true
+        }
+    }
+
+    unCheckListItem(listItem, checkButton, listItemText,removeButton){
+        this._listItemsActive.push(listItem)
+        this._checkButtonsActive.push(checkButton)
+        this._listItemsTextActive.push(listItemText)
+        this._removeButtonsActive.push(removeButton)
+
+        this._listItemsCompleted.shift(listItem)
+        this._checkButtonsCompleted.shift(checkButton)
+        this._listItemsTextCompleted.shift(listItemText)
+        this._removeButtonsCompleted.shift(removeButton)
+
+        if(verifyTheme=== 'dark'){
+            delete checkButton.dataset.btnCompleted
+            delete listItemText.dataset.textCompletedDarkTheme
+        }else{
+            delete checkButton.dataset.btnCompleted
+            delete listItemText.dataset.textCompleted
+        }
     }
 
     get getTheListItems(){

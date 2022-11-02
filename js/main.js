@@ -110,21 +110,22 @@ listContainer.addEventListener('click', (e) => {
     let target = e.target
 
     let otherItemsInTheLi = [...target.closest('li').children]
+    let targetListItem = target.closest('li')
     let targetCheckButton = otherItemsInTheLi[0]
     let targetText = otherItemsInTheLi[1]
     let targetRemoveButton = otherItemsInTheLi[2]
 
     let targetMatchesLi = target.matches('.list-item:not(.list-item--empty')
-    let targetMatchesCheckButton = target.matches('circle-shape--li')
+    let targetMatchesCheckButton = target.matches('.circle-shape--li')
     let targetMatchesText = target.matches('.list-item__text')
     let targetLiIsNotTheEmptyText = !target.closest('li').classList.contains('list-item--empty')
 
-    if(targetMatchesLi || (targetMatchesCheckButton || targetMatchesText & targetLiIsNotTheEmptyText)){
+    if(targetMatchesLi || ((targetMatchesCheckButton || targetMatchesText) & targetLiIsNotTheEmptyText)){
 
         if(targetCheckButton.dataset.btnCompleted){
-            delete targetCheckButton.dataset.btnCompleted
+            toDoListItemsMaker.unCheckListItem(targetListItem, targetCheckButton, targetText, targetRemoveButton)
         }else{
-            targetCheckButton.dataset.btnCompleted = true
+            toDoListItemsMaker.checkListItem(targetListItem, targetCheckButton, targetText, targetRemoveButton)
         }
     }
 })
