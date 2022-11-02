@@ -24,13 +24,9 @@ const footer = document.querySelector('footer')
 
 const footerP = document.querySelector('.footer__p')
 
+const circleShapeNextToInput = document.querySelector('.circle-shape')
 
 
-const listItems = document.querySelectorAll('.list-item')
-
-const listItemsText = document.querySelectorAll('.list-item__text')
-
-const circleShapes = document.querySelectorAll('.circle-shape')
 
 const filterBtns = document.querySelectorAll('.filter-btns')
 
@@ -48,28 +44,23 @@ function changeTheme(changeThemeButton){
         delete body.dataset.bodyDarkTheme 
         delete header.dataset.headerDarkTheme 
         delete listInputDiv.dataset.listInputDarkTheme 
-        delete listInputTag.dataset.listInputTagDarkTheme 
+        delete listInputTag.dataset.listInputTagDarkTheme
+        delete circleShapeNextToInput.dataset.circleShapeDarkTheme
+
 
         delete listContainer.dataset.listContainerDarkTheme
-        
         toDoListItemsMaker.setLightTheme()
-
         delete listBottomLiLeft.dataset.listBottomItemsLeftDarkTheme 
-
         delete clearCompletedBtn.dataset.clearCompletedDarkTheme 
-
         delete bottomFilters2.dataset.bottomFiltersTwoDarkTheme 
-
         filterBtns.forEach( filterBtn =>{
             delete filterBtn.dataset.filterBtnsDarkTheme 
         })
 
-        delete endParagraph.dataset.endParagraphDarkTheme 
-
+        delete endParagraph.dataset.endParagraphDarkTheme
+         
         delete footer.dataset.footerDarkTheme 
-
         delete footerP.dataset.footerParagraphDarkTheme 
-
         footerLinks.forEach( footerLink =>{
             delete footerLink.dataset.footerLinkDarkTheme 
         })
@@ -82,17 +73,13 @@ function changeTheme(changeThemeButton){
         header.dataset.headerDarkTheme = true
         listInputDiv.dataset.listInputDarkTheme = true
         listInputTag.dataset.listInputTagDarkTheme = true
+        circleShapeNextToInput.dataset.circleShapeDarkTheme = true
         
         listContainer.dataset.listContainerDarkTheme = true
-
         toDoListItemsMaker.setDarkTheme()
-
         listBottomLiLeft.dataset.listBottomItemsLeftDarkTheme = true
-
         clearCompletedBtn.dataset.clearCompletedDarkTheme = true
-
         bottomFilters2.dataset.bottomFiltersTwoDarkTheme = true
-
         filterBtns.forEach( filterBtn =>{
             filterBtn.dataset.filterBtnsDarkTheme = true
         })
@@ -100,9 +87,7 @@ function changeTheme(changeThemeButton){
         endParagraph.dataset.endParagraphDarkTheme = true
 
         footer.dataset.footerDarkTheme = true
-
         footerP.dataset.footerParagraphDarkTheme = true
-
         footerLinks.forEach( footerLink =>{
             footerLink.dataset.footerLinkDarkTheme = true
         })

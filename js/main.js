@@ -1,6 +1,6 @@
 export {toDoListItemsMaker}
 
-import { changeTheme } from "./dark-theme.js"
+import { changeTheme, verifyTheme} from "./dark-theme.js"
 import { ListItemsMaker } from "./class.js"
 
 const changeThemeButton = document.querySelector('.change-theme-btn')
@@ -34,19 +34,97 @@ listInputTag.addEventListener('keypress', (e) => {
 
             listInputTag.value = null
 
-            removeListItemsButtons = toDoListItemsMaker.getTheRemoveButtons
-            removeListItemsButtons.forEach(removeListItemsButton => {
-    
-                removeListItemsButton.addEventListener('click', (e) =>{
-                    toDoListItemsMaker.removeListItem(e.target)
-                })
-            
-            });
         }
-
         
     }
 })
 /*Programming the input of text<<*/
 
 
+const listContainer = document.querySelector('.list-container')
+
+listContainer.addEventListener('click', (e) => {
+    let target = e.target
+
+    if(target.matches('.list-item__remove-btn')){
+        let otherItemsInTheLi = [...target.closest('li').children]
+        toDoListItemsMaker.removeListItem(otherItemsInTheLi[0], otherItemsInTheLi[1], otherItemsInTheLi[2],target)
+
+    }
+})
+
+
+/*>>Hovering on list items*/
+
+let mq = window.matchMedia('(min-width: 50em)')
+
+if(mq.matches){
+
+    listContainer.addEventListener('mouseover', (e) => {
+
+        let target = e.target
+
+        if(target.matches('.list-item:not(.list-item--empty)')){
+            let otherItemsInTheLi = [...target.children]
+            let targetCheckButton = otherItemsInTheLi[0]
+            let targetRemoveButton = otherItemsInTheLi[2]
+
+            targetCheckButton.dataset.btnHovering = true
+            targetRemoveButton.dataset.removeBtnHover = true
+        }
+    })
+
+    listContainer.addEventListener('mouseout', (e) => {
+        let target = e.target
+        let relatedTarget = e.relatedTarget
+
+        let mouseOutTheLiAndEntersBody = 
+        target.matches('.list-item:not(.list-item--empty)') && relatedTarget.matches('body')
+
+        let mouseOutTheLiAndEntersHeader = 
+        target.matches('.list-item:not(.list-item--empty)') && relatedTarget.matches('header')
+
+        let mouseOutTheLiAndEntersAnotherLi = 
+        target.matches('.list-item:not(.list-item--empty)') && relatedTarget.matches('.list-item:not(.list-item--empty)')
+
+        let mouseOutTheLiAndEntersListBottom =
+        target.matches('.list-item:not(.list-item--empty)') && relatedTarget.matches('.list-container-bottom')
+
+        if(mouseOutTheLiAndEntersBody || mouseOutTheLiAndEntersHeader || 
+           mouseOutTheLiAndEntersAnotherLi || mouseOutTheLiAndEntersListBottom) {
+            let otherItemsInTheLi = [...target.children]
+            let targetCheckButton = otherItemsInTheLi[0]
+            let targetRemoveButton = otherItemsInTheLi[2]
+
+            delete targetCheckButton.dataset.btnHovering
+            delete targetRemoveButton.dataset.removeBtnHover
+
+        }
+    })
+
+}
+
+
+listContainer.addEventListener('click', (e) => {
+
+    let target = e.target
+
+    let otherItemsInTheLi = [...target.closest('li').children]
+    let targetCheckButton = otherItemsInTheLi[0]
+    let targetText = otherItemsInTheLi[1]
+    let targetRemoveButton = otherItemsInTheLi[2]
+
+    let targetMatchesLi = target.matches('.list-item:not(.list-item--empty')
+    let targetMatchesCheckButton = target.matches('circle-shape--li')
+    let targetMatchesText = target.matches('.list-item__text')
+    let targetLiIsNotTheEmptyText = !target.closest('li').classList.contains('list-item--empty')
+
+    if(targetMatchesLi || (targetMatchesCheckButton || targetMatchesText & targetLiIsNotTheEmptyText)){
+
+        if(targetCheckButton.dataset.btnCompleted){
+            delete targetCheckButton.dataset.btnCompleted
+        }else{
+            targetCheckButton.dataset.btnCompleted = true
+        }
+    }
+})

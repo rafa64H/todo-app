@@ -1,6 +1,7 @@
 export {ListItemsMaker}
 
 import { verifyTheme } from "./dark-theme.js"
+import { toDoListItemsMaker } from "./main.js"
 
 class ListItemsMaker {
     constructor(ulElement, emptyText, liChildren){
@@ -9,38 +10,51 @@ class ListItemsMaker {
         this._checkButtons = []
         this._listItemsText = []
         this._removeButtons = []
-        this._verifyThereIsNoItems = liChildren
-        this._noItemsText = emptyText
-    
-        this._removeEmptyText = () =>{
-            if(this._verifyThereIsNoItems.length === 0){
-                this._noItemsText.style.display = 'block'
-            }else{
-                this._noItemsText.style.display = 'none'
-            }
+
+        this._listItemsActive = []
+        this._checkButtonsActive = []
+        this._listItemsTextActive = []
+        this._removeButtonsActive = []
+
+        this._listItemsCompleted = []
+        this._checkButtonsCompleted = []
+        this._listItemsTextCompleted = []
+        this._removeButtonsCompleted = []
+
+
+        this.verifyThereIsNoItems = liChildren
+        this.noItemsText = emptyText
+    }
+
+    hideEmptyText = () =>{
+        if(this.verifyThereIsNoItems.length === 0){
+            this.noItemsText.style.display = 'block'
+        }else{
+            this.noItemsText.style.display = 'none'
         }
-
-        
-
     }
 
     createListItem(text){
         const li = document.createElement('li')
         li.classList.add('list-item')
         this._listItems.push(li)
+        this._listItemsActive.push(li)
 
         const buttonCheck = document.createElement('button')
         buttonCheck.classList.add('circle-shape', 'circle-shape--li')
         this._checkButtons.push(buttonCheck)
+        this._checkButtonsActive.push(buttonCheck)
 
         const listText = document.createElement('p')
         listText.classList.add('list-item__text')
         listText.textContent = text
         this._listItemsText.push(listText)
+        this._listItemsTextActive.push(listText)
 
         const buttonRemove = document.createElement('button')
         buttonRemove.classList.add('list-item__remove-btn')
         this._removeButtons.push(buttonRemove)
+        this._removeButtonsActive.push(buttonRemove)
 
         if(verifyTheme === 'dark'){
 
@@ -52,8 +66,8 @@ class ListItemsMaker {
             li.appendChild(listText)
             li.appendChild(buttonRemove)
             
-            this._verifyThereIsNoItems = document.querySelectorAll('.list-item:not(.list-item--empty)')
-            this._removeEmptyText()
+            this.verifyThereIsNoItems = document.querySelectorAll('.list-item:not(.list-item--empty)')
+            this.hideEmptyText()
 
         }else{
             this._list.appendChild(li)
@@ -62,23 +76,39 @@ class ListItemsMaker {
             li.appendChild(listText)
             li.appendChild(buttonRemove)
             
-            this._verifyThereIsNoItems = document.querySelectorAll('.list-item:not(.list-item--empty)')
-            this._removeEmptyText()
+            this.verifyThereIsNoItems = document.querySelectorAll('.list-item:not(.list-item--empty)')
+            this.hideEmptyText()
         }
 
 
     }
 
-    removeListItem(buttonRemove){
+    removeListItem(checkButton, listItemText, buttonRemove, listItem){
+        this._checkButtons.shift(checkButton)
+        this._listItemsText.shift(listItemText)
         this._removeButtons.shift(buttonRemove)
+        this._listItems.shift(listItem)
+
+        this._checkButtonsActive.shift(checkButton)
+        this._listItemsTextActive.shift(listItemText)
+        this._removeButtonsActive.shift(buttonRemove)
+        this._listItemsActive.shift(listItem)
+
+        this._checkButtonsCompleted.shift(checkButton)
+        this._listItemsTextCompleted.shift(listItemText)
+        this._removeButtonsCompleted.shift(buttonRemove)
+        this._listItemsCompleted.shift(listItem)
 
         buttonRemove.closest('.list-item').remove()
 
-        this._verifyThereIsNoItems = document.querySelectorAll('.list-item:not(.list-item--empty)')
-        this._removeEmptyText()
+        this.verifyThereIsNoItems = document.querySelectorAll('.list-item:not(.list-item--empty)')
+        this.hideEmptyText()
     }
 
     setDarkTheme(){
+
+        this.noItemsText.dataset.listItemDarkTheme = true
+
         this._listItems.forEach(listItem => {
             listItem.dataset.listItemDarkTheme  = true
         });
@@ -93,6 +123,9 @@ class ListItemsMaker {
     }
 
     setLightTheme(){
+
+        delete this.noItemsText.dataset.listItemDarkTheme
+
         this._listItems.forEach(listItem => {
             delete listItem.dataset.listItemDarkTheme
         });
@@ -106,7 +139,24 @@ class ListItemsMaker {
         });
     }
 
+    checkListItem(listItem, checkButton, listItemText,removeButton){
+
+    }
+
+    get getTheListItems(){
+        return this._listItems
+    }
+
     get getTheRemoveButtons(){
         return this._removeButtons
     }
+
+    get getTheCheckButtons(){
+        return this._checkButtons
+    }
+
+    get getTheListItemsText(){
+        return this._listItemsText
+    }
+
 }
