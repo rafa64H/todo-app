@@ -13,16 +13,13 @@ changeThemeButton.addEventListener('click', () =>{
 /*>>Creating list from class */
 const toDoList = document.querySelector('.todo-list')
 const textWhenThereIsNoItems = document.querySelector('.list-item--empty')
-const toDoListLiChildren = document.querySelectorAll('.list-item:not(.list-item--empty)')
 
-const toDoListItemsMaker = new ListItemsMaker(toDoList, textWhenThereIsNoItems, toDoListLiChildren)
+const toDoListItemsMaker = new ListItemsMaker(toDoList, textWhenThereIsNoItems)
 /*Creating list from class<<*/
 
 
 /*>>Programming the input of text*/
 const listInputTag = document.querySelector('.list-input__tag')
-let removeListItemsButtons = toDoListItemsMaker.getTheRemoveButtons
-
 
 listInputTag.addEventListener('keypress', (e) => {
     if(e.key === 'Enter'){
@@ -35,20 +32,20 @@ listInputTag.addEventListener('keypress', (e) => {
             listInputTag.value = null
 
         }
-        
     }
 })
 /*Programming the input of text<<*/
 
-
-const listContainer = document.querySelector('.list-container')
-
-listContainer.addEventListener('click', (e) => {
+toDoList.addEventListener('click', (e) => {
     let target = e.target
 
     if(target.matches('.list-item__remove-btn')){
         let otherItemsInTheLi = [...target.closest('li').children]
-        toDoListItemsMaker.removeListItem(otherItemsInTheLi[0], otherItemsInTheLi[1], otherItemsInTheLi[2],target)
+        let targetListItem = target.closest('li')
+        let targetCheckButton = otherItemsInTheLi[0]
+        let targetText = otherItemsInTheLi[1]
+        let targetRemoveButton = otherItemsInTheLi[2]
+        toDoListItemsMaker.removeListItem(targetCheckButton, targetText, targetRemoveButton,targetListItem)
 
     }
 })
@@ -60,7 +57,7 @@ let mq = window.matchMedia('(min-width: 50em)')
 
 if(mq.matches){
 
-    listContainer.addEventListener('mouseover', (e) => {
+    toDoList.addEventListener('mouseover', (e) => {
 
         let target = e.target
 
@@ -74,7 +71,7 @@ if(mq.matches){
         }
     })
 
-    listContainer.addEventListener('mouseout', (e) => {
+    toDoList.addEventListener('mouseout', (e) => {
         let target = e.target
         let relatedTarget = e.relatedTarget
 
@@ -105,7 +102,7 @@ if(mq.matches){
 }
 
 
-listContainer.addEventListener('click', (e) => {
+toDoList.addEventListener('click', (e) => {
 
     let target = e.target
 
@@ -113,7 +110,6 @@ listContainer.addEventListener('click', (e) => {
     let targetListItem = target.closest('li')
     let targetCheckButton = otherItemsInTheLi[0]
     let targetText = otherItemsInTheLi[1]
-    let targetRemoveButton = otherItemsInTheLi[2]
 
     let targetMatchesLi = target.matches('.list-item:not(.list-item--empty')
     let targetMatchesCheckButton = target.matches('.circle-shape--li')
@@ -123,9 +119,34 @@ listContainer.addEventListener('click', (e) => {
     if(targetMatchesLi || ((targetMatchesCheckButton || targetMatchesText) & targetLiIsNotTheEmptyText)){
 
         if(targetCheckButton.dataset.btnCompleted){
-            toDoListItemsMaker.unCheckListItem(targetListItem, targetCheckButton, targetText, targetRemoveButton)
+            toDoListItemsMaker.unCheckListItem(targetListItem, targetCheckButton, targetText)
+            
         }else{
-            toDoListItemsMaker.checkListItem(targetListItem, targetCheckButton, targetText, targetRemoveButton)
+            toDoListItemsMaker.checkListItem(targetListItem, targetCheckButton, targetText)
         }
     }
 })
+
+const filterBtns = document.querySelectorAll('.filter-btns')
+
+filterBtns.forEach(filterBtn => {
+    filterBtn.addEventListener('click', (e) =>{
+        let target = e.target
+
+        if(target.matches('.filter-btns--all')){
+
+            toDoListItemsMaker.showAllListItems(filterBtns[0], filterBtns[3])
+
+        }
+        else if(target.matches('.filter-btns--active')){
+            
+            toDoListItemsMaker.showActiveListItems(filterBtns[1], filterBtns[4])
+
+        }
+        else if(target.matches('.filter-btns--completed')){
+
+            toDoListItemsMaker.showCompletedListItems(filterBtns[2], filterBtns[5])
+
+        }
+    })
+});
