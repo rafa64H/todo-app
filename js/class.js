@@ -168,6 +168,8 @@ class ListItemsMaker {
 
     showAllListItems(filterBtnAll1, filterBtnAll2){
 
+        this.hideEmptyText()
+
         this._listItems.forEach(listItem => {
             listItem.style.display = 'flex'
         });

@@ -352,11 +352,11 @@ footer{
 
 /*----Dark-theme*/
 [data-header-dark-theme]{
-    background-image: url(/images/bg-desktop-dark.jpg);
+    background-image: url('../images/bg-desktop-dark.jpg');
 }
 
 [data-change-theme-btn-dark-theme]{
-    background-image: url(../images/icon-sun.svg);
+    background-image: url('../images/icon-sun.svg');
 }
 
 [data-body-dark-theme]{
