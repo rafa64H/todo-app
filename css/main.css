@@ -287,8 +287,18 @@ footer{
         transform: translateY(-5em);
     }
 
-    .list-item:hover{
+    .list-item:not(.list-item--empty):hover{
         cursor: pointer;
+    }
+
+    .list-item:not(.list-item--empty):hover .circle-shape--li{
+        border: 1px solid var(--Bright-Blue) !important;
+        transition: all 300ms;
+    }
+
+    .list-item:not(.list-item--empty):hover .list-item__remove-btn{
+        opacity: 1;
+        transition: all 300ms;
     }
 
     .circle-shape--li{
@@ -319,16 +329,6 @@ footer{
 /*Media query desktop--*/
 
 /*--Data attributes for JS*/
-[data-btn-hovering]{
-    border: 1px solid var(--Bright-Blue) !important;
-    transition: all 300ms;
-}
-
-[data-remove-btn-hover]{
-    opacity: 1;
-    transition: all 300ms;
-}
-
 [data-btn-completed]{
     background: url('../images/icon-check.svg'), var(--Chec-Background);
     background-repeat: no-repeat;

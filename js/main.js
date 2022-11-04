@@ -50,58 +50,6 @@ toDoList.addEventListener('click', (e) => {
     }
 })
 
-
-/*>>Hovering on list items*/
-
-let mq = window.matchMedia('(min-width: 50em)')
-
-if(mq.matches){
-
-    toDoList.addEventListener('mouseover', (e) => {
-
-        let target = e.target
-
-        if(target.matches('.list-item:not(.list-item--empty)')){
-            let otherItemsInTheLi = [...target.children]
-            let targetCheckButton = otherItemsInTheLi[0]
-            let targetRemoveButton = otherItemsInTheLi[2]
-
-            targetCheckButton.dataset.btnHovering = true
-            targetRemoveButton.dataset.removeBtnHover = true
-        }
-    })
-
-    toDoList.addEventListener('mouseout', (e) => {
-        let target = e.target
-        let relatedTarget = e.relatedTarget
-
-        let mouseOutTheLiAndEntersBody = 
-        target.matches('.list-item:not(.list-item--empty)') && relatedTarget.matches('body')
-
-        let mouseOutTheLiAndEntersHeader = 
-        target.matches('.list-item:not(.list-item--empty)') && relatedTarget.matches('header')
-
-        let mouseOutTheLiAndEntersAnotherLi = 
-        target.matches('.list-item:not(.list-item--empty)') && relatedTarget.matches('.list-item:not(.list-item--empty)')
-
-        let mouseOutTheLiAndEntersListBottom =
-        target.matches('.list-item:not(.list-item--empty)') && relatedTarget.matches('.list-container-bottom')
-
-        if(mouseOutTheLiAndEntersBody || mouseOutTheLiAndEntersHeader || 
-           mouseOutTheLiAndEntersAnotherLi || mouseOutTheLiAndEntersListBottom) {
-            let otherItemsInTheLi = [...target.children]
-            let targetCheckButton = otherItemsInTheLi[0]
-            let targetRemoveButton = otherItemsInTheLi[2]
-
-            delete targetCheckButton.dataset.btnHovering
-            delete targetRemoveButton.dataset.removeBtnHover
-
-        }
-    })
-
-}
-
-
 toDoList.addEventListener('click', (e) => {
 
     let target = e.target
