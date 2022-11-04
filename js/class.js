@@ -167,6 +167,7 @@ class ListItemsMaker {
     }
 
     showAllListItems(filterBtnAll1, filterBtnAll2){
+
         this._listItems.forEach(listItem => {
             listItem.style.display = 'flex'
         });
@@ -183,6 +184,8 @@ class ListItemsMaker {
 
     showActiveListItems(filterBtnActive1, filterBtnActive2){
 
+        this.noItemsText.style.display = 'none'
+
         this._listItemsCompleted.forEach(listItemCompleted => {
             listItemCompleted.style.display = 'none'
         });
@@ -190,6 +193,10 @@ class ListItemsMaker {
         this._listItemsActive.forEach(listItemActive => {
             listItemActive.style.display = 'flex'
         });
+
+        if(this._listItemsActive.length === 0){
+            this.noItemsText.style.display = 'block'
+        }
 
         let currentActiveBtns= document.querySelectorAll('[data-filter-active]')
 
@@ -203,6 +210,8 @@ class ListItemsMaker {
 
     showCompletedListItems(filterBtnCompleted1, filterBtnCompleted2){
 
+        this.noItemsText.style.display = 'none'
+
         this._listItemsActive.forEach(listItemActive => {
             listItemActive.style.display = 'none'
         });
@@ -210,6 +219,10 @@ class ListItemsMaker {
         this._listItemsCompleted.forEach(listItemCompleted => {
             listItemCompleted.style.display = 'flex'
         });
+
+        if(this._listItemsCompleted.length === 0){
+            this.noItemsText.style.display = 'block'
+        }
 
         let currentActiveBtns= document.querySelectorAll('[data-filter-active]')
 
@@ -219,6 +232,16 @@ class ListItemsMaker {
 
         filterBtnCompleted1.dataset.filterActive = true
         filterBtnCompleted2.dataset.filterActive = true
+    }
+
+    clearCompleted(){
+        this._listItemsCompleted.forEach(listItemCompleted =>{
+            listItemCompleted.remove()
+        })
+
+        this._listItemsCompleted = this._list.querySelectorAll('[data-completed]')
+        this._listItemsTextCompleted = this._list.querySelectorAll('[data-text-completed]')
+        this._listItemsTextCompletedDarkTheme = this._list.querySelectorAll('[data-text-completed-dark-theme]')
     }
 
     updateItemsLeftMessage(){

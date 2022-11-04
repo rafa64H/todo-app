@@ -150,3 +150,9 @@ filterBtns.forEach(filterBtn => {
         }
     })
 });
+
+const clearCompletedBtn = document.querySelector('.clear-completed')
+
+clearCompletedBtn.addEventListener('click', () => {
+    toDoListItemsMaker.clearCompleted()
+})
