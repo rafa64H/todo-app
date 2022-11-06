@@ -242,9 +242,18 @@ class ListItemsMaker {
             listItemCompleted.remove()
         })
 
+        this._listItems = this.list.querySelectorAll('.list-item:not(.list-item--empty)')
+        this._checkButtons = this.list.querySelectorAll('.circle-shape--li')
+        this._listItemsText = this.list.querySelectorAll('.list-item__text')
+        this._removeButtons = this.list.querySelectorAll('.list-item__remove-btn')
+
         this._listItemsCompleted = this.list.querySelectorAll('[data-completed]')
+        this._listItemsActive = this.list.querySelectorAll('.list-item:not(.list-item--empty):not([data-completed])')
+
         this._listItemsTextCompleted = this.list.querySelectorAll('[data-text-completed]')
         this._listItemsTextCompletedDarkTheme = this.list.querySelectorAll('[data-text-completed-dark-theme]')
+
+        this.hideEmptyText()
     }
 
     updateItemsLeftMessage(){
