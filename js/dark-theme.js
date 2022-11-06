@@ -2,6 +2,8 @@ export {changeTheme, verifyTheme}
 
 import { toDoListItemsMaker } from "./main.js"
 
+
+/*>>Variables*/
 const body = document.querySelector('body')
 
 const header = document.querySelector('header')
@@ -32,10 +34,9 @@ const filterBtns = document.querySelectorAll('.filter-btns')
 
 const footerLinks = document.querySelectorAll('.footer__link')
 
+
 let verifyTheme = body.getAttribute('data-verify-theme')
-
-
-
+/*>>Variables*/
 
 function changeTheme(changeThemeButton){
     

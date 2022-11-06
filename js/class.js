@@ -1,21 +1,20 @@
 export {ListItemsMaker}
 
 import { verifyTheme } from "./dark-theme.js"
-import { toDoListItemsMaker } from "./main.js"
 
 class ListItemsMaker {
     constructor(ulElement, emptyText){
-        this._list = ulElement
-        this._listItems = this._list.querySelectorAll('.list-item:not(.list-item--empty)')
-        this._checkButtons = this._list.querySelectorAll('.circle-shape--li')
-        this._listItemsText = this._list.querySelectorAll('.list-item__text')
-        this._removeButtons = this._list.querySelectorAll('.list-item__remove-btn')
+        this.list = ulElement
+        this._listItems = this.list.querySelectorAll('.list-item:not(.list-item--empty)')
+        this._checkButtons = this.list.querySelectorAll('.circle-shape--li')
+        this._listItemsText = this.list.querySelectorAll('.list-item__text')
+        this._removeButtons = this.list.querySelectorAll('.list-item__remove-btn')
 
-        this._listItemsCompleted = this._list.querySelectorAll('[data-completed]')
-        this._listItemsActive = this._list.querySelectorAll('.list-item:not(.list-item--empty):not([data-completed])')
+        this._listItemsCompleted = this.list.querySelectorAll('[data-completed]')
+        this._listItemsActive = this.list.querySelectorAll('.list-item:not(.list-item--empty):not([data-completed])')
 
-        this._listItemsTextCompleted = this._list.querySelectorAll('[data-text-completed]')
-        this._listItemsTextCompletedDarkTheme = this._list.querySelectorAll('[data-text-completed-dark-theme]')
+        this._listItemsTextCompleted = this.list.querySelectorAll('[data-text-completed]')
+        this._listItemsTextCompletedDarkTheme = this.list.querySelectorAll('[data-text-completed-dark-theme]')
 
 
         this.noItemsText = emptyText
@@ -43,17 +42,19 @@ class ListItemsMaker {
         const buttonRemove = document.createElement('button')
         buttonRemove.classList.add('list-item__remove-btn')
 
-        this._list.appendChild(li)
+        this.list.appendChild(li)
 
         li.appendChild(buttonCheck)
         li.appendChild(listText)
         li.appendChild(buttonRemove)
 
-        this._listItems = this._list.querySelectorAll('.list-item:not(.list-item--empty)')
-        this._listItemsActive = this._list.querySelectorAll('.list-item:not(.list-item--empty):not([data-completed])')
-        this._checkButtons = this._list.querySelectorAll('.circle-shape--li')
-        this._listItemsText = this._list.querySelectorAll('.list-item__text')
-        this._removeButtons = this._list.querySelectorAll('.list-item__remove-btn')
+        /*This kind of code is to update the variables*/
+        this._listItems = this.list.querySelectorAll('.list-item:not(.list-item--empty)')
+        this._listItemsActive = this.list.querySelectorAll('.list-item:not(.list-item--empty):not([data-completed])')
+        this._checkButtons = this.list.querySelectorAll('.circle-shape--li')
+        this._listItemsText = this.list.querySelectorAll('.list-item__text')
+        this._removeButtons = this.list.querySelectorAll('.list-item__remove-btn')
+
         this.hideEmptyText()
 
         if(verifyTheme === 'dark'){
@@ -67,17 +68,17 @@ class ListItemsMaker {
 
         buttonRemove.closest('.list-item').remove()
 
-        this._listItems = this._list.querySelectorAll('.list-item:not(.list-item--empty)')
-        this._listItemsActive = this._list.querySelectorAll('.list-item:not(.list-item--empty):not([data-completed])')
-        this._checkButtons = this._list.querySelectorAll('.circle-shape--li')
-        this._listItemsText = this._list.querySelectorAll('.list-item__text')
-        this._removeButtons = this._list.querySelectorAll('.list-item__remove-btn')
+        this._listItems = this.list.querySelectorAll('.list-item:not(.list-item--empty)')
+        this._listItemsActive = this.list.querySelectorAll('.list-item:not(.list-item--empty):not([data-completed])')
+        this._checkButtons = this.list.querySelectorAll('.circle-shape--li')
+        this._listItemsText = this.list.querySelectorAll('.list-item__text')
+        this._removeButtons = this.list.querySelectorAll('.list-item__remove-btn')
 
-        this._listItemsCompleted = this._list.querySelectorAll('[data-completed]')
-        this._listItemsActive = this._list.querySelectorAll('.list-item:not(.list-item--empty):not([data-completed])')
+        this._listItemsCompleted = this.list.querySelectorAll('[data-completed]')
+        this._listItemsActive = this.list.querySelectorAll('.list-item:not(.list-item--empty):not([data-completed])')
 
-        this._listItemsTextCompleted = this._list.querySelectorAll('[data-text-completed]')
-        this._listItemsTextCompletedDarkTheme = this._list.querySelectorAll('[data-text-completed-dark-theme]')
+        this._listItemsTextCompleted = this.list.querySelectorAll('[data-text-completed]')
+        this._listItemsTextCompletedDarkTheme = this.list.querySelectorAll('[data-text-completed-dark-theme]')
 
         this.hideEmptyText()
         this.updateItemsLeftMessage()
@@ -131,9 +132,9 @@ class ListItemsMaker {
     checkListItem(listItem, checkButton, listItemText){
         checkButton.dataset.btnCompleted = true
         listItem.dataset.completed = true
-    
-        this._listItemsCompleted = this._list.querySelectorAll('[data-completed]')
-        this._listItemsActive = this._list.querySelectorAll('.list-item:not(.list-item--empty):not([data-completed])')
+        
+        this._listItemsCompleted = this.list.querySelectorAll('[data-completed]')
+        this._listItemsActive = this.list.querySelectorAll('.list-item:not(.list-item--empty):not([data-completed])')
 
         if(verifyTheme=== 'dark'){
             listItemText.dataset.textCompletedDarkTheme = true
@@ -141,8 +142,8 @@ class ListItemsMaker {
             listItemText.dataset.textCompleted = true
         }
 
-        this._listItemsTextCompleted = this._list.querySelectorAll('[data-text-completed]')
-        this._listItemsTextCompletedDarkTheme = this._list.querySelectorAll('[data-text-completed-dark-theme]')
+        this._listItemsTextCompleted = this.list.querySelectorAll('[data-text-completed]')
+        this._listItemsTextCompletedDarkTheme = this.list.querySelectorAll('[data-text-completed-dark-theme]')
 
         this.updateItemsLeftMessage()
     }
@@ -151,8 +152,8 @@ class ListItemsMaker {
         delete checkButton.dataset.btnCompleted
         delete listItem.dataset.completed
 
-        this._listItemsCompleted = this._list.querySelectorAll('[data-completed]')
-        this._listItemsActive = this._list.querySelectorAll('.list-item:not(.list-item--empty):not([data-completed])')
+        this._listItemsCompleted = this.list.querySelectorAll('[data-completed]')
+        this._listItemsActive = this.list.querySelectorAll('.list-item:not(.list-item--empty):not([data-completed])')
 
         if(verifyTheme=== 'dark'){
             delete listItemText.dataset.textCompletedDarkTheme
@@ -160,8 +161,8 @@ class ListItemsMaker {
             delete listItemText.dataset.textCompleted
         }
 
-        this._listItemsTextCompleted = this._list.querySelectorAll('[data-text-completed]')
-        this._listItemsTextCompletedDarkTheme = this._list.querySelectorAll('[data-text-completed-dark-theme]')
+        this._listItemsTextCompleted = this.list.querySelectorAll('[data-text-completed]')
+        this._listItemsTextCompletedDarkTheme = this.list.querySelectorAll('[data-text-completed-dark-theme]')
 
         this.updateItemsLeftMessage()
     }
@@ -241,9 +242,9 @@ class ListItemsMaker {
             listItemCompleted.remove()
         })
 
-        this._listItemsCompleted = this._list.querySelectorAll('[data-completed]')
-        this._listItemsTextCompleted = this._list.querySelectorAll('[data-text-completed]')
-        this._listItemsTextCompletedDarkTheme = this._list.querySelectorAll('[data-text-completed-dark-theme]')
+        this._listItemsCompleted = this.list.querySelectorAll('[data-completed]')
+        this._listItemsTextCompleted = this.list.querySelectorAll('[data-text-completed]')
+        this._listItemsTextCompletedDarkTheme = this.list.querySelectorAll('[data-text-completed-dark-theme]')
     }
 
     updateItemsLeftMessage(){
@@ -252,30 +253,6 @@ class ListItemsMaker {
 
         listItemsLeftParagraph.textContent = this._listItemsActive.length + ' items left'
 
-    }
-
-    get getTheListItems(){
-        return this._listItems
-    }
-
-    get getTheRemoveButtons(){
-        return this._removeButtons
-    }
-
-    get getTheCheckButtons(){
-        return this._checkButtons
-    }
-
-    get getTheListItemsText(){
-        return this._listItemsText
-    }
-
-    get getTheListItemsActive(){
-        return this._listItemsActive
-    }
-
-    get getTheListItemsCompleted(){
-        return this._listItemsCompleted
     }
 
 }

@@ -1,6 +1,6 @@
 export {toDoListItemsMaker}
 
-import { changeTheme, verifyTheme} from "./dark-theme.js"
+import { changeTheme} from "./dark-theme.js"
 import { ListItemsMaker } from "./class.js"
 
 const changeThemeButton = document.querySelector('.change-theme-btn')
@@ -12,7 +12,7 @@ changeThemeButton.addEventListener('click', () =>{
 
 /*>>Creating list from class */
 const toDoList = document.querySelector('.todo-list')
-const textWhenThereIsNoItems = document.querySelector('.list-item--empty')
+const textWhenThereIsNoItems = toDoList.querySelector('.list-item--empty')
 
 const toDoListItemsMaker = new ListItemsMaker(toDoList, textWhenThereIsNoItems)
 /*Creating list from class<<*/
@@ -36,6 +36,8 @@ listInputTag.addEventListener('keypress', (e) => {
 })
 /*Programming the input of text<<*/
 
+
+/*>>The remove button*/
 toDoList.addEventListener('click', (e) => {
     let target = e.target
 
@@ -49,22 +51,24 @@ toDoList.addEventListener('click', (e) => {
 
     }
 })
+/*The remove button<<*/
 
+
+/*>>Check button*/
 toDoList.addEventListener('click', (e) => {
 
     let target = e.target
 
     let otherItemsInTheLi = [...target.closest('li').children]
+
     let targetListItem = target.closest('li')
     let targetCheckButton = otherItemsInTheLi[0]
     let targetText = otherItemsInTheLi[1]
 
-    let targetMatchesLi = target.matches('.list-item:not(.list-item--empty')
-    let targetMatchesCheckButton = target.matches('.circle-shape--li')
-    let targetMatchesText = target.matches('.list-item__text')
+
     let targetLiIsNotTheEmptyText = !target.closest('li').classList.contains('list-item--empty')
 
-    if(targetMatchesLi || ((targetMatchesCheckButton || targetMatchesText) & targetLiIsNotTheEmptyText)){
+    if(targetLiIsNotTheEmptyText){
 
         if(targetCheckButton.dataset.btnCompleted){
             toDoListItemsMaker.unCheckListItem(targetListItem, targetCheckButton, targetText)
@@ -74,7 +78,10 @@ toDoList.addEventListener('click', (e) => {
         }
     }
 })
+/*Check button<<*/
 
+
+/*>>Programming the filter buttons*/
 const filterBtns = document.querySelectorAll('.filter-btns')
 
 filterBtns.forEach(filterBtn => {
@@ -82,25 +89,25 @@ filterBtns.forEach(filterBtn => {
         let target = e.target
 
         if(target.matches('.filter-btns--all')){
-
             toDoListItemsMaker.showAllListItems(filterBtns[0], filterBtns[3])
-
         }
-        else if(target.matches('.filter-btns--active')){
-            
+        
+        else if(target.matches('.filter-btns--active')){   
             toDoListItemsMaker.showActiveListItems(filterBtns[1], filterBtns[4])
-
         }
+
         else if(target.matches('.filter-btns--completed')){
-
             toDoListItemsMaker.showCompletedListItems(filterBtns[2], filterBtns[5])
-
         }
     })
 });
+/*>>Programming the filter buttons<<*/
 
+
+/*>>The clear completed button*/
 const clearCompletedBtn = document.querySelector('.clear-completed')
 
 clearCompletedBtn.addEventListener('click', () => {
     toDoListItemsMaker.clearCompleted()
 })
+/*The clear completed button<<*/
